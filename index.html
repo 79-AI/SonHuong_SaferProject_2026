@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFER 2026 — Infographic Kế Hoạch</title>
+<style>
+  :root{
+    --green:#2E7D52; --green-d:#1f5a3a; --teal:#3a9b8f; --coral:#E8472A;
+    --amber:#c98a1a; --ink:#16241d; --muted:#6a786f; --line:#e6efe9;
+    --bg:#eef4f0; --card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.45}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 70px}
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
+    text-align:center;padding:34px 18px 80px;border-radius:0 0 30px 30px}
+  .hero .k{letter-spacing:4px;font-size:11px;text-transform:uppercase;opacity:.8}
+  .hero h1{font-size:34px;font-weight:900;margin:4px 0}
+  .hero .t{font-size:13px;opacity:.9}
+  /* NORTH STAR */
+  .star{background:var(--card);max-width:680px;margin:-58px auto 28px;border-radius:22px;
+    box-shadow:0 16px 40px rgba(20,60,40,.14);padding:24px;text-align:center}
+  .star .lbl{color:var(--coral);font-weight:800;font-size:12px;letter-spacing:2px}
+  .star .num{font-size:58px;font-weight:900;color:var(--green-d);line-height:1}
+  .star .unit{font-size:18px;color:var(--muted);font-weight:700}
+  .star .row{display:flex;gap:10px;margin-top:16px}
+  .star .b{flex:1;border:2px solid var(--line);border-radius:14px;padding:12px 6px}
+  .star .b b{display:block;font-size:26px;color:var(--green)}
+  .star .b.h b{color:var(--coral)}
+  .star .b small{font-size:11px;color:var(--muted)}
+  /* SECTION */
+  .sec{margin:30px 0 0}
+  .sh{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .sh .n{width:34px;height:34px;border-radius:11px;background:var(--green);color:#fff;
+    font-weight:900;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+  .sh h2{font-size:19px;color:var(--green-d)}
+  /* GRID CARDS */
+  .grid{display:grid;gap:12px}
+  .g5{grid-template-columns:repeat(5,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+  .card .ic{font-size:30px;line-height:1}
+  .card h4{font-size:13px;margin:8px 0 3px;color:var(--green-d)}
+  .card p{font-size:11.5px;color:var(--muted);line-height:1.35}
+  .card .cust{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:10.5px;color:var(--green-d);font-weight:700;line-height:1.4}
+  .card .cust span{display:block;font-weight:500;color:var(--muted);font-size:10px;margin-top:1px}
+  /* PRODUCT MIX */
+  .mixwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;
+    display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .donut{width:180px;height:180px;border-radius:50%;flex:none;position:relative;
+    background:conic-gradient(var(--green) 0 40%,var(--teal) 40% 70%,var(--coral) 70% 90%,var(--amber) 90% 100%)}
+  .donut::after{content:"5.000";position:absolute;inset:34px;background:var(--card);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;color:var(--green-d)}
+  .donut .cap{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:50px;font-size:10px;color:var(--muted)}
+  .legend{flex:1;min-width:240px}
+  .legend .li{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .legend .li:last-child{border:none}
+  .dot{width:13px;height:13px;border-radius:4px;flex:none}
+  .legend .li b{margin-left:auto;color:var(--green-d)}
+  .legend .li small{color:var(--muted)}
+  /* CHANNELS */
+  .chan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ch{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative;overflow:hidden}
+  .ch .bar{position:absolute;top:0;left:0;width:5px;height:100%;background:var(--green)}
+  .ch.fb .bar{background:#1877f2}.ch.yt .bar{background:#ff0000}.ch.tt .bar{background:#000}
+  .ch.za .bar{background:#0068ff}.ch.sh .bar{background:#ee4d2d}.ch.pv .bar{background:var(--coral)}
+  .ch.ds .bar{background:var(--teal)}.ch.fa .bar{background:var(--amber)}.ch.vi .bar{background:var(--green)}
+  .ch h4{font-size:13.5px;color:var(--ink);display:flex;align-items:center;gap:6px;margin-bottom:4px}
+  .ch .own{font-size:11px;font-weight:800;color:var(--green-d);background:#eef5f0;border-radius:6px;padding:1px 7px;display:inline-block;margin-bottom:5px}
+  .ch p{font-size:11px;color:var(--muted);line-height:1.35}
+  .pct{font-size:10px;color:var(--coral);font-weight:800}
+  /* FB FUNNEL */
+  .funnel{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .fstep{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;
+    display:flex;align-items:center;gap:14px;width:100%}
+  .fstep .fic{font-size:24px;flex:none}
+  .fstep .ft{flex:1}
+  .fstep .ft b{font-size:13.5px;color:var(--green-d)}
+  .fstep .ft p{font-size:11.5px;color:var(--muted)}
+  .fstep .st{font-weight:900;color:var(--green);font-size:18px;opacity:.4;flex:none}
+  .arrow{color:var(--green);font-size:18px;opacity:.5}
+  .fbout{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border-radius:14px;
+    padding:14px;text-align:center;width:100%;font-weight:800}
+  .fbout b{font-size:22px}
+  .adsnote{background:#fff7e8;border:1px dashed var(--amber);border-radius:12px;padding:10px 14px;
+    font-size:11.5px;color:#7a5a14;margin-top:10px}
+  .adsnote b{color:var(--amber)}
+  /* ORG */
+  .org{display:flex;flex-direction:column;align-items:center;gap:0}
+  .obox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;text-align:center;width:100%;max-width:560px}
+  .obox.top{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border:none}
+  .obox.mid{border:2px solid var(--green)}
+  .obox .orole{font-weight:800;font-size:14px;color:var(--green-d)}
+  .obox.top .orole{color:#fff}
+  .obox .odesc{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .obox.top .odesc{color:rgba(255,255,255,.9)}
+  .otags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:9px}
+  .otags span{background:#eef5f0;color:var(--green-d);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:600}
+  .oarrow{color:var(--green);font-size:11px;font-weight:700;padding:7px 0;opacity:.7}
+  .obot{display:flex;gap:12px;width:100%;max-width:560px}
+  .obox.sm{padding:12px}
+  .obox.sm .orole{font-size:13px}
+  @media(max-width:520px){.obot{flex-direction:column}}
+  /* APPROVE */
+  .approve{background:#fff7e8;border:1px dashed var(--amber);border-radius:14px;padding:12px 16px;margin-bottom:14px}
+  .approve .ap1{font-size:13px;color:var(--amber);margin-bottom:6px}
+  .approve .apflow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;color:#7a5a14}
+  .approve .apflow span{background:#fff;border:1px solid #f0dcae;border-radius:8px;padding:5px 10px;font-weight:600}
+  .approve .apflow i{color:var(--amber);font-weight:900;font-style:normal}
+  /* MEETING BAR */
+  .meetbar{background:#eef5f0;border:1px solid var(--line);border-left:5px solid var(--green);border-radius:12px;padding:11px 16px;margin-top:12px}
+  .meetbar .mb1{font-size:13px;color:var(--green-d);margin-bottom:6px}
+  .meetbar .mbflow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:11px}
+  .meetbar .mbflow span{background:#fff;border:1px solid var(--line);border-radius:7px;padding:4px 9px;color:var(--muted);font-weight:600}
+  .meetbar .mbflow span:last-child{background:transparent;border:none;color:var(--green);font-weight:800}
+  .card.mtg{padding:12px}
+  .card.mtg .d{display:inline-block;background:var(--green);color:#fff;font-weight:900;font-size:13px;border-radius:8px;padding:3px 10px;margin-bottom:7px}
+  .card.mtg:last-child .d{background:var(--coral)}
+  .card.mtg p{font-size:11px;color:var(--muted);line-height:1.4}
+  /* TIMELINE */
+  .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .tnode{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;position:relative;text-align:center}
+  .tnode .mon{font-size:12px;font-weight:900;color:#fff;background:var(--green);border-radius:8px;padding:3px 0;margin-bottom:8px}
+  .tnode:nth-child(1) .mon{background:var(--coral)}
+  .tnode:nth-child(5) .mon{background:var(--green-d)}
+  .tnode h4{font-size:12px;color:var(--green-d);margin-bottom:6px}
+  .tnode ul{list-style:none;font-size:10.5px;color:var(--muted);text-align:left}
+  .tnode li{padding:2px 0 2px 12px;position:relative}
+  .tnode li::before{content:"›";position:absolute;left:0;color:var(--green);font-weight:900}
+  /* B2B */
+  .b2bcore{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border-radius:14px;padding:14px 18px;font-size:13.5px}
+  .b2bcore b{color:#fff}
+  .b2bcore span{display:block;font-size:11.5px;color:rgba(255,255,255,.88);margin-top:5px;font-weight:400}
+  .card.seg{position:relative;border-top-width:3px}
+  .card.seg.hot{border-top-color:var(--coral)}
+  .card.seg.mid{border-top-color:var(--amber)}
+  .card.seg.low{border-top-color:var(--teal)}
+  .card.seg .sg{font-size:10px;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
+  .card.seg.hot .sg{color:var(--coral)}
+  .card.seg.mid .sg{color:var(--amber)}
+  .card.seg.low .sg{color:var(--teal)}
+  .card.seg h4{margin:0 0 4px}
+  /* COST */
+  .cost{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .cost .price{text-align:center}
+  .cost .price b{font-size:44px;color:var(--coral);font-weight:900;line-height:1}
+  .cost .price small{color:var(--muted);font-size:12px}
+  .cost .who{flex:1;min-width:220px}
+  .cost .who .p2{display:flex;gap:10px;margin-bottom:8px}
+  .cost .who .pp{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-size:12px}
+  .cost .who .pp b{display:block;color:var(--green-d);font-size:14px}
+  .cost .who p{font-size:11.5px;color:var(--muted)}
+  .foot{text-align:center;color:var(--muted);font-size:11px;margin-top:30px}
+  @media(max-width:720px){
+    .g5,.g4,.chan,.tl{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="k">Y Tế Sơn Hương · THINK BIG — ACT SMALL</div>
+  <h1>SAFER · KẾ HOẠCH 2026</h1>
+  <div class="t">Infographic · cập nhật 20/06/2026</div>
+</div>
+
+<div class="wrap">
+
+  <!-- NORTH STAR -->
+  <div class="star">
+    <div class="lbl">🎯 MỤC TIÊU 2026</div>
+    <div class="num">3.000–5.000</div>
+    <div class="unit">túi sơ cứu SAFER</div>
+    <div class="row">
+      <div class="b"><b>3.000</b><small>Thận trọng<br>~430 túi/tháng</small></div>
+      <div class="b h"><b>5.000</b><small>Kỳ vọng<br>~715 túi/tháng</small></div>
+      <div class="b"><b>~3,25 tỷ</b><small>Doanh thu (5.000 túi)<br>+ refill về sau</small></div>
+    </div>
+  </div>
+
+  <!-- 1. PRINCIPLES -->
+  <div class="sec">
+    <div class="sh"><div class="n">1</div><h2>Nguyên tắc nền tảng</h2></div>
+    <div class="grid g5">
+      <div class="card"><div class="ic">🛠️</div><h4>Sản phẩm trước</h4><p>Làm cứng rồi mới đẩy marketing</p></div>
+      <div class="card"><div class="ic">🙋</div><h4>B2C trước</h4><p>Song hành B2B · khách phải tin</p></div>
+      <div class="card"><div class="ic">♻️</div><h4>Khách trọn đời</h4><p>Kiểm tra hằng năm → refill định kỳ</p></div>
+      <div class="card"><div class="ic">🥾</div><h4>Thực chiến</h4><p>Thân thiện · không "số 1"</p></div>
+      <div class="card"><div class="ic">📋</div><h4>Chuẩn pháp lý</h4><p>Đăng ký Loại A trước</p></div>
+    </div>
+  </div>
+
+  <!-- 2. PRODUCT MIX -->
+  <div class="sec">
+    <div class="sh"><div class="n">2</div><h2>Sản phẩm & Mix mục tiêu</h2></div>
+    <div class="mixwrap">
+      <div class="donut"><div class="cap">túi · kịch bản 5.000</div></div>
+      <div class="legend">
+        <div class="li"><span class="dot" style="background:var(--green)"></span> Gói Starter (A) <small>· 500K</small> <b>2.000</b></div>
+        <div class="li"><span class="dot" style="background:var(--teal)"></span> Gói Standard (B) <small>· 900K</small> <b>1.500</b></div>
+        <div class="li"><span class="dot" style="background:var(--coral)"></span> Túi cá nhân <small>· 150K</small> <b>1.000</b></div>
+        <div class="li"><span class="dot" style="background:var(--amber)"></span> Gói Pro (C) <small>· 1,5tr</small> <b>500</b></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card" style="text-align:left"><div class="ic">⛑️</div><h4>Nhóm 1 — Sơ cấp cứu <span style="color:var(--coral);font-size:10px">TRỤC CHÍNH</span></h4><p>Túi sơ cứu · vật tư tiêu hao · dụng cụ · thiết bị hồi sức (AED)</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🧓</div><h4>Nhóm 2 — Chăm sóc cao tuổi <span style="color:var(--muted);font-size:10px">TỪ T9</span></h4><p>Xe lăn · gậy · dụng cụ hỗ trợ → dòng cao cấp</p></div>
+    </div>
+    <div class="grid g4" style="margin-top:12px">
+      <div class="card"><div class="ic">🔁</div><h4>Refill + Remind</h4><p>Recurring revenue</p><div class="cust">👤 Khách đã mua túi<span>DN · văn phòng · nhà máy · hộ gia đình duy trì theo quy định hằng năm</span></div></div>
+      <div class="card"><div class="ic">🏭</div><h4>OEM / Sỉ</h4><p>Theo yêu cầu</p><div class="cust">👤 Mua số lượng lớn<span>Đại lý · nhà phân phối · DN muốn túi branding riêng</span></div></div>
+      <div class="card"><div class="ic">📦</div><h4>Cho thuê</h4><p>Thiết bị sự kiện</p><div class="cust">👤 Đơn vị tổ chức<span>Giải thể thao · hội nghị · lễ hội · đoàn phim · công ty du lịch</span></div></div>
+      <div class="card"><div class="ic">🎓</div><h4>First Aid Training</h4><p>Cộng đồng</p><div class="cust">👤 Học viên & tổ chức<span>DN (HSE/HR) · trường học · hội nhóm · gia đình có người cao tuổi</span></div></div>
+    </div>
+  </div>
+
+  <!-- 3. CHANNELS & TEAM -->
+  <div class="sec">
+    <div class="sh"><div class="n">3</div><h2>Kênh bán hàng & Đội ngũ</h2></div>
+    <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px">📱 <b>3 kênh nội dung:</b> Facebook (Sơn Hương) · YouTube · TikTok</p>
+    <div class="chan">
+      <div class="ch fb"><div class="bar"></div><h4>📘 Facebook</h4><span class="own">Hải Âu</span><p>Chăm sóc page mới · 5 trụ (xem Mục 5)</p></div>
+      <div class="ch yt"><div class="bar"></div><h4>▶️ YouTube</h4><span class="own">Đội nội dung</span><p>Kênh dài hạn · kiến thức sơ cứu</p></div>
+      <div class="ch tt"><div class="bar"></div><h4>🎵 TikTok</h4><span class="own">Hạnh · <span class="pct">hưởng %</span></span><p>Review túi Safer + câu chuyện thực tế, đăng kênh riêng · Chị Dung & Anh Sang hướng dẫn</p></div>
+      <div class="ch vi"><div class="bar"></div><h4>🎬 Video hằng ngày</h4><span class="own">Lộc & Âu</span><p>Cửa hàng quay → <b>Hải Âu & Lộc</b> edit · chữ to cho người lớn tuổi</p></div>
+      <div class="ch za"><div class="bar"></div><h4>💬 Zalo OA</h4><span class="own">Cửa hàng</span><p>Giáo dục pháp lý B2B + nhắc refill</p></div>
+      <div class="ch sh"><div class="bar"></div><h4>🛒 Shopee / Lazada</h4><span class="own">2 NV Sài Gòn</span><p>Kênh bán phụ · đơn hàng & chăm khách</p></div>
+      <div class="ch pv"><div class="bar"></div><h4>🏞️ Phúc Võ — KOL</h4><span class="own">Brand Ambassador</span><p>Tour outdoor + First Aid thực chiến + bài Safer trang cá nhân</p></div>
+      <div class="ch ds"><div class="bar"></div><h4>📞 Direct Sales B2B</h4><span class="own">Cửa hàng Sài Gòn</span><p>Gọi/gặp 5–10 công ty/tuần · kiêm nhiệm (xem Mục 7)</p></div>
+      <div class="ch fa"><div class="bar"></div><h4>🎓 First Aid Training</h4><span class="own">Anh Sang</span><p>2–4 lớp/năm · tài trợ túi → bán chéo</p></div>
+    </div>
+  </div>
+
+  <!-- 4. ORG / RACI -->
+  <div class="sec">
+    <div class="sh"><div class="n">4</div><h2>Phân chia công việc & Quản lý</h2></div>
+    <div class="org">
+      <div class="obox top"><div class="orole">👑 Chị Dung & Anh Sang</div><div class="odesc">Quản lý tổng · định hướng & duyệt phương án</div></div>
+      <div class="oarrow">▲ báo cáo trực tiếp</div>
+      <div class="obox mid"><div class="orole">🧭 Tài — Quản lý vận hành & Phát triển</div>
+        <div class="otags">
+          <span>Quản lý Lộc, Âu & Hạnh</span>
+          <span>Phát triển web Safer</span>
+          <span>Mini CRM</span>
+          <span>Lên kế hoạch First Aid</span>
+          <span>Kế hoạch tour T9</span>
+          <span>Báo cáo lên Chị Dung & Anh Sang</span>
+        </div>
+      </div>
+      <div class="oarrow">▼ điều phối</div>
+      <div class="obot">
+        <div class="obox sm"><div class="orole">🎬 Lộc</div><div class="odesc">Edit video hằng ngày (không quay)</div></div>
+        <div class="obox sm"><div class="orole">📘 Hải Âu</div><div class="odesc">Video + chăm sóc Facebook (KPI)</div></div>
+        <div class="obox sm"><div class="orole">🎵 Hạnh</div><div class="odesc">Review TikTok (hưởng %)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. ROADMAP -->
+  <div class="sec">
+    <div class="sh"><div class="n">5</div><h2>Lộ trình (từ 20/6)</h2></div>
+    <div class="approve">
+      <div class="ap1">✋ <b>Bước duyệt phương án</b></div>
+      <div class="apflow"><span>Chị Dung &amp; Anh Sang chốt duyệt phương án</span> <i>→</i> <span>Tài lên kế hoạch &amp; báo cáo chi tiết</span> <i>→</i> <span>Triển khai</span></div>
+    </div>
+    <div class="tl">
+      <div class="tnode"><div class="mon">20–30/6</div><h4>Chốt nền tảng</h4><ul><li>Dựng web Safer + mini CRM đa nền tảng</li><li>Bàn giao FB mới Sơn Hương</li><li>Chốt NS video + chăm sóc FB</li><li>Chốt phương án TikTok cho Hạnh</li><li>Đề xuất lương Hải Âu & Lộc</li></ul></div>
+      <div class="tnode"><div class="mon">Tháng 7</div><h4>Khởi động</h4><ul><li>🎯 Web Safer LAUNCH cuối T7</li><li>3 kênh + video/ngày</li><li>First Aid buổi 1 (pilot) ↓</li><li>Hồ sơ Loại A</li></ul></div>
+      <div class="tnode"><div class="mon">Tháng 8</div><h4>Tăng tốc + Ads</h4><ul><li>🎯 Mini CRM launch giữa T8</li><li>Đẩy Reels + FB Ads</li><li>First Aid buổi 2 (50) ↓</li><li>Chị Dung xong khóa</li></ul></div>
+      <div class="tnode"><div class="mon">Tháng 9</div><h4>Test trải nghiệm</h4><ul><li>Tour Bảo Lộc 3N2Đ (20)</li><li>Du lịch + sơ cứu</li><li>Tài lên lịch chi tiết</li><li>Ra mắt nhóm cao tuổi</li></ul></div>
+      <div class="tnode"><div class="mon">T10–12</div><h4>Mở rộng B2B</h4><ul><li>🏃 <b>09–10/10:</b> Booth Đất Sen Hồng</li><li>Túi+training+AED</li><li>Refill / remind</li><li>KPI & plan 2027</li></ul></div>
+    </div>
+    <div class="meetbar">
+      <div class="mb1">📹 <b>Họp online review &amp; đánh giá — cuối mỗi tháng</b></div>
+      <div class="mbflow"><span>Số túi bán</span><span>Follower 3 kênh</span><span>Leads B2B</span><span>First Aid</span><span>→ điều chỉnh tháng sau</span></div>
+    </div>
+    <div class="grid g4" style="margin-top:12px">
+      <div class="card mtg" style="text-align:left"><div class="d">30/6</div><p>Duyệt nền tảng: web/CRM tiến độ · bàn giao FB · chốt nhân sự + lương → duyệt kế hoạch T7</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">31/7</div><p>Review web launch · 3 kênh + video/ngày · đánh giá First Aid buổi 1 (pilot) · hồ sơ Loại A → chốt T8</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">31/8</div><p>Review CRM launch · Reels/Ads · First Aid buổi 2 (50) · khóa Chị Dung → chốt tour T9</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">30/9</div><p>Review tour Bảo Lộc · nhóm cao tuổi · tổng số túi Q3 → chốt kế hoạch B2B T10</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">31/10</div><p>Review B2B (túi+training+AED) · refill khởi động · số túi & leads</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">30/11</div><p>Review tăng tốc cuối năm · refill/remind · tiến độ mục tiêu túi</p></div>
+      <div class="card mtg" style="text-align:left"><div class="d">31/12</div><p>Tổng kết năm: KPI 3–5k túi · doanh thu · follower → lập kế hoạch 2027</p></div>
+    </div>
+    <h3 style="font-size:13px;color:var(--green-d);margin:16px 0 8px">🎓 First Aid cộng đồng HDV — 2 buổi (T7 pilot → T8 nhân rộng)</h3>
+    <div class="grid g2">
+      <div class="card" style="text-align:left"><div class="ic">🥾</div><h4>Buổi 1 · Tháng 7 — Sơn Hương + Phúc <span style="color:var(--coral);font-size:10px">PILOT</span></h4><p>Anh em HDV & bạn bè · <b>tối đa 25 người</b> · chạy thử để kiểm tra, đánh giá cách tổ chức</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🤝</div><h4>Buổi 2 · Tháng 8 — Sơn Hương + Cộng đồng HDV miền Nam</h4><p>Cho anh chị em HDV + <b>tặng quà</b> · <b>tối đa 50 người</b></p></div>
+    </div>
+  </div>
+
+  <!-- 5. FACEBOOK -->
+  <div class="sec">
+    <div class="sh"><div class="n">6</div><h2>Chiến lược Facebook — Hải Âu</h2></div>
+    <div class="funnel">
+      <div class="fstep"><div class="fic">✅</div><div class="ft"><b>① Nhiệm vụ tuần FB</b><p>Hoàn thành 100% → nuôi tài khoản, thuật toán đẩy Reels</p></div><div class="st">01</div></div>
+      <div class="arrow">▼</div>
+      <div class="fstep"><div class="fic">🎬</div><div class="ft"><b>② Reels đánh nỗi sợ</b><p>VD "Sai lầm khi tự đo huyết áp" · chữ to cho người lớn tuổi</p></div><div class="st">02</div></div>
+      <div class="arrow">▼</div>
+      <div class="fstep"><div class="fic">👥</div><div class="ft"><b>③ Group Seeding</b><p>Tư vấn ở hội nhóm cao tuổi / tiểu đường / sức khỏe → kéo follow</p></div><div class="st">03</div></div>
+      <div class="arrow">▼</div>
+      <div class="fstep"><div class="fic">🎁</div><div class="ft"><b>④ Giveaway / Mini-game</b><p>Tặng PDF "theo dõi huyết áp" / nhiệt kế · Like + tag bạn bè</p></div><div class="st">04</div></div>
+      <div class="arrow">▼</div>
+      <div class="fstep" style="opacity:.78;border-style:dashed"><div class="fic">📣</div><div class="ft"><b>⑤ Facebook Ads <span style="color:var(--amber);font-size:10px;border:1px solid var(--amber);border-radius:5px;padding:0 5px">OPTIONAL</span></b><p>Khi Reels có view tốt → ngân sách nhỏ, mua reach chuẩn xác</p></div><div class="st">05</div></div>
+      <div class="arrow">▼</div>
+      <div class="fbout">🎯 <b>5.000 follower</b> thật trong 2026</div>
+    </div>
+    <div class="adsnote"><b>⚙️ Lưu ý Ads (từ ảnh):</b> đổi mục tiêu từ "Tăng số cuộc gọi" → <b>"Tăng tương tác"</b> để nuôi page · ngân sách test ~100K/ngày · vị trí Advantage+ bật.</div>
+
+    <h3 style="font-size:13px;color:var(--green-d);margin:16px 0 8px">🎁 Giveaway — làm gì cụ thể</h3>
+    <div class="grid g4">
+      <div class="card" style="text-align:left"><div class="ic">🎁</div><h4>Quà tặng</h4><p>PDF "Bảng theo dõi huyết áp" (chi phí 0₫) · Mini-game: nhiệt kế điện tử hoặc túi sơ cứu mini</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📋</div><h4>Thể lệ</h4><p>Like trang + Thả tim bài + Tag 2–3 bạn + Share công khai</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📅</div><h4>Tần suất</h4><p>1 lần / 2 tuần · chọn người trúng bằng quay số livestream</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🎯</div><h4>Mục đích</h4><p>Follower cũ kéo follower mới (vòng lặp viral) · thu data B2C</p></div>
+    </div>
+  </div>
+
+  <!-- 7. B2B -->
+  <div class="sec">
+    <div class="sh"><div class="n">7</div><h2>Động cơ B2B — xương sống doanh số</h2></div>
+    <div class="b2bcore">💡 Chiến lược cốt lõi: <b>"Không bán sản phẩm — bán sự tuân thủ pháp luật & an toàn"</b><span>Cần ~110–350 khách DN để đạt 3.000–5.000 túi · B2B = volume + recurring (refill bắt buộc hằng năm) · Xem chi tiết 25 nhóm khách hàng tại <a href="customers.html" style="color:#fff;text-decoration:underline">customers.html →</a></span></div>
+
+    <h3 style="font-size:13px;color:var(--green-d);margin:14px 0 8px">🎯 Compliance B2B — theo thứ tự ưu tiên (điểm ma trận)</h3>
+    <div class="grid g2">
+      <div class="card seg hot" style="text-align:left"><div class="sg">🔥 #1 · 4.45đ</div><h4>🏭 Nhà máy / KCN</h4><p><b>HSE/EHS Manager</b> · Nhiều phân xưởng, nguy cơ cao, audit định kỳ · "Trọn gói TT19 + kiểm tra định kỳ, tránh rủi ro thanh tra" · Pilot 1 phân xưởng → nhân rộng</p></div>
+      <div class="card seg hot" style="text-align:left"><div class="sg">🔥 #2 · 4.20đ</div><h4>🏢 Văn phòng doanh nghiệp</h4><p><b>HR / Admin Director</b> · TAM rộng nhất, chuẩn hóa dễ · Bán theo gói quy mô (10/30/50/100 nhân viên) · Recurring ổn định nhất</p></div>
+      <div class="card seg mid" style="text-align:left"><div class="sg">⚡ #5 · 3.90đ</div><h4>🚌 Vận tải hành khách (đội xe)</h4><p><b>Chủ đội xe / Fleet Manager</b> · Bán theo đầu xe · "Đạt chuẩn phương tiện" · Refill trùng chu kỳ đăng kiểm — recurring tự nhiên</p></div>
+      <div class="card seg mid" style="text-align:left"><div class="sg">⚡ #6 · 3.85đ</div><h4>📦 Logistics / Kho bãi / Cảng</h4><p><b>HSE Manager / Quản lý kho</b> · Diện tích lớn, nhiều điểm đặt · "Mật độ điểm sơ cứu/diện tích kho" + hợp đồng refill</p></div>
+      <div class="card seg low" style="text-align:left"><div class="sg">💡 #10 · 3.65đ</div><h4>⚙️ Cơ khí / Hóa chất / Dệt / Gỗ</h4><p><b>HSE chuyên ngành</b> · Margin cao nhờ module chuyên (burn, eye wash) · Tư vấn theo risk scenario từng ngành</p></div>
+      <div class="card seg low" style="text-align:left"><div class="sg">💡 #12 · 3.60đ</div><h4>🏫 Trường học / Đại học</h4><p><b>Ban giám hiệu / Phòng y tế</b> · Volume cao theo hệ thống trường · Combo "túi + tập huấn sơ cứu" = education moat</p></div>
+    </div>
+
+    <div style="background:#eef5f0;border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:12px 16px;margin-top:12px">
+      <div style="font-size:12px;font-weight:800;color:var(--teal);margin-bottom:6px">🧳 LỢI THẾ RIÊNG SAFER — Du lịch & Mạo hiểm</div>
+      <div style="font-size:11.5px;color:var(--muted)">Công ty lữ hành (túi đoàn/xe + kit co-brand tặng khách) & Du lịch mạo hiểm (trauma kit Elite, margin cao) — không bắt buộc TT19 nhưng SAFER có <b>lợi thế kênh từ The Ant Adventures + Phúc Võ KOL</b>. Tiếp cận: điều hành tour / trưởng đoàn an toàn.</div>
+    </div>
+
+    <h3 style="font-size:13px;color:var(--green-d);margin:16px 0 8px">🏷️ OEM / White-label — top 3 nhóm ưu tiên</h3>
+    <div class="grid g3">
+      <div class="card" style="text-align:left;border-top:3px solid var(--coral)"><div class="sg" style="color:var(--coral);font-size:10px;font-weight:800">#3 · 4.15đ · OEM</div><h4>🛡️ Công ty bảo hiểm</h4><p>Co-brand logo · 500–2.000+ túi/campaign · Volume RẤT lớn, lặp theo quý · "Quà hữu ích, đúng tinh thần bảo vệ"</p></div>
+      <div class="card" style="text-align:left;border-top:3px solid var(--coral)"><div class="sg" style="color:var(--coral);font-size:10px;font-weight:800">#4 · 4.05đ · OEM</div><h4>💊 Chuỗi nhà thuốc / siêu thị</h4><p>Private label bán lẻ · 1.000–5.000 túi · Kênh phân phối sẵn (quan hệ YTSH) · Volume rất lớn theo số điểm bán</p></div>
+      <div class="card" style="text-align:left;border-top:3px solid var(--amber)"><div class="sg" style="color:var(--amber);font-size:10px;font-weight:800">#6 · 3.85đ · OEM</div><h4>🚗 Hãng xe / đại lý ô tô</h4><p>OEM túi xe hơi · 300–1.500 túi/lô · Recurring tự nhiên theo doanh số xe bán ra</p></div>
+    </div>
+    <div style="text-align:right;margin-top:6px"><a href="customers.html" style="font-size:11.5px;color:var(--green);font-weight:700;text-decoration:none">Xem đầy đủ 15 nhóm OEM + 25 nhóm toàn bộ → customers.html</a></div>
+
+    <h3 style="font-size:13px;color:var(--green-d);margin:16px 0 8px">⚙️ Cách triển khai</h3>
+    <div class="grid g4">
+      <div class="card" style="text-align:left"><div class="ic">📚</div><h4>3 trụ nội dung</h4><p>Pháp lý (NĐ39/TT19) · case study · hướng dẫn dùng</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🎓</div><h4>First Aid = cửa ngõ lead</h4><p>Mỗi lớp chạm trực tiếp HR/HSE/chủ DN</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📞</div><h4>Direct Sales</h4><p><b>Cửa hàng Sài Gòn</b> kiêm nhiệm · 5–10 cty/tuần</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🔁</div><h4>Refill / Remind</h4><p>Doanh thu lặp lại hằng năm theo luật</p></div>
+    </div>
+
+    <h3 style="font-size:13px;color:var(--green-d);margin:16px 0 8px">📅 B2B chạy song song cả năm (3 lớp)</h3>
+    <div class="grid g3">
+      <div class="card" style="text-align:left"><div class="ic">🧱</div><h4>Nền · T7–T8</h4><p>Trang pháp lý web · bảng giá theo quy mô · form B2B · Zalo OA</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🧲</div><h4>Lead-gen · T7–T9</h4><p>First Aid HDV + tour Bảo Lộc sinh lead · data B2B</p></div>
+      <div class="card" style="text-align:left"><div class="ic">🚀</div><h4>Đẩy mạnh · T10–T12</h4><p>Direct sales + gói túi+training+AED + vòng refill đầu</p></div>
+    </div>
+  </div>
+
+  <!-- 8. SALES ACTION PLAN -->
+  <div class="sec">
+    <div class="sh"><div class="n">8</div><h2>Sales Action Plan — Làm gì để đạt 5.000 túi</h2></div>
+
+    <!-- INSIGHT BOX -->
+    <div style="background:#fff3e0;border:1px solid #f0c070;border-left:5px solid var(--amber);border-radius:12px;padding:14px 18px;margin-bottom:16px">
+      <div style="font-size:12px;font-weight:800;color:#92620a;margin-bottom:6px">💡 Insight quan trọng — đừng phụ thuộc vào cold call</div>
+      <div style="font-size:12px;color:#7a5014;line-height:1.6">Cold outreach 7 contact/tuần × 6 tháng → ~13 closes × 35 túi = <b>chỉ ~450 túi.</b> Không đủ. Chìa khoá là <b>OEM bulk (1 deal = 500–1.000 túi)</b> + First Aid làm lead magnet B2B. Cold call là bổ trợ, không phải trục chính.</div>
+    </div>
+
+    <!-- 3 REVENUE ENGINES -->
+    <h3 style="font-size:13px;color:var(--green-d);margin:0 0 10px">⚙️ 3 Động cơ doanh số — mỗi cái một nhiệm vụ khác nhau</h3>
+    <div class="grid g3">
+      <div class="card" style="text-align:left;border-top:4px solid var(--coral)">
+        <div style="font-size:10px;font-weight:800;color:var(--coral);margin-bottom:4px">🔥 ĐỘNG CƠ 1 · ~2.300 túi</div>
+        <h4 style="font-size:14px">OEM / Bulk Deal</h4>
+        <p style="font-size:11.5px;color:var(--muted);margin:6px 0">2–3 deal lớn = gần nửa mục tiêu. Đây là <b>đòn bẩy cao nhất</b> — 1 deal bảo hiểm = 1.000 túi.</p>
+        <div style="font-size:11px;background:#fff5f5;border-radius:8px;padding:8px;margin-top:6px">
+          <b style="color:var(--coral)">3 target OEM cần chốt:</b><br>
+          🛡️ Bảo hiểm — 1 campaign = ~1.000 túi<br>
+          💊 Nhà thuốc YTSH network — ~800 túi<br>
+          🚗 Hãng xe / đại lý — ~500 túi
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px"><b>Ai tiếp cận:</b> Anh Sang + Tài · <b>Lead time:</b> 6–10 tuần · <b>Bắt đầu:</b> T7 ngay</div>
+      </div>
+
+      <div class="card" style="text-align:left;border-top:4px solid var(--green)">
+        <div style="font-size:10px;font-weight:800;color:var(--green);margin-bottom:4px">💼 ĐỘNG CƠ 2 · ~1.500 túi</div>
+        <h4 style="font-size:14px">Compliance B2B Direct</h4>
+        <p style="font-size:11.5px;color:var(--muted);margin:6px 0">30–50 DN × 30–50 túi. Không thể chỉ cold call — phải dùng <b>First Aid làm cửa ngõ</b> vào HR/HSE.</p>
+        <div style="font-size:11px;background:#f0faf4;border-radius:8px;padding:8px;margin-top:6px">
+          <b style="color:var(--green)">Nhịp tuần (Cửa hàng Sài Gòn):</b><br>
+          📞 Thứ 2–3: 5–7 cold contacts (gọi/Zalo)<br>
+          🤝 Thứ 4–5: 1–2 meetings follow-up<br>
+          📄 Thứ 6: Gửi proposal + admin
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px"><b>Ai tiếp cận:</b> Cửa hàng Sài Gòn kiêm · <b>KPI:</b> 5–7 contacts/tuần · <b>Scale T10</b></div>
+      </div>
+
+      <div class="card" style="text-align:left;border-top:4px solid var(--teal)">
+        <div style="font-size:10px;font-weight:800;color:var(--teal);margin-bottom:4px">🌐 ĐỘNG CƠ 3 · ~1.500 túi</div>
+        <h4 style="font-size:14px">B2C Inbound + First Aid</h4>
+        <p style="font-size:11.5px;color:var(--muted);margin:6px 0">Content + web kéo đơn lẻ. First Aid training = lead B2B miễn phí (mỗi lớp 25–50 HR/HSE).</p>
+        <div style="font-size:11px;background:#f0faf7;border-radius:8px;padding:8px;margin-top:6px">
+          <b style="color:var(--teal)">2 nguồn chính:</b><br>
+          🎓 First Aid T7 (25) + T8 (50) → B2B leads<br>
+          🛒 Web / Shopee / Facebook → đơn lẻ B2C<br>
+          🏍️ Content xe máy/ô tô → traffic + đơn
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px"><b>Ai phụ trách:</b> Hải Âu + Tài · <b>Chạy liên tục</b> từ T7</div>
+      </div>
+    </div>
+
+    <!-- PIPELINE -->
+    <h3 style="font-size:13px;color:var(--green-d);margin:20px 0 10px">🔄 Pipeline 5 bước — áp dụng cho cả B2B lẫn OEM</h3>
+    <div style="display:flex;gap:0;margin-bottom:4px">
+      <div style="flex:1;background:var(--coral);color:#fff;text-align:center;padding:10px 6px;border-radius:10px 0 0 10px;font-size:11px;font-weight:800">L1<br><span style="font-weight:500;font-size:10px">Prospect<br>Tìm & lọc</span></div>
+      <div style="width:0;height:0;border-top:40px solid transparent;border-bottom:40px solid transparent;border-left:14px solid var(--coral);z-index:1"></div>
+      <div style="flex:1;background:#d4870a;color:#fff;text-align:center;padding:10px 6px;margin-left:-2px;font-size:11px;font-weight:800">L2<br><span style="font-weight:500;font-size:10px">First Contact<br>Gọi/Zalo/Email</span></div>
+      <div style="width:0;height:0;border-top:40px solid transparent;border-bottom:40px solid transparent;border-left:14px solid #d4870a;z-index:1"></div>
+      <div style="flex:1;background:var(--teal);color:#fff;text-align:center;padding:10px 6px;margin-left:-2px;font-size:11px;font-weight:800">L3<br><span style="font-weight:500;font-size:10px">Meeting/Demo<br>Tư vấn trực tiếp</span></div>
+      <div style="width:0;height:0;border-top:40px solid transparent;border-bottom:40px solid transparent;border-left:14px solid var(--teal);z-index:1"></div>
+      <div style="flex:1;background:var(--green);color:#fff;text-align:center;padding:10px 6px;margin-left:-2px;font-size:11px;font-weight:800">L4<br><span style="font-weight:500;font-size:10px">Proposal<br>Gửi báo giá</span></div>
+      <div style="width:0;height:0;border-top:40px solid transparent;border-bottom:40px solid transparent;border-left:14px solid var(--green);z-index:1"></div>
+      <div style="flex:1;background:var(--green-d);color:#fff;text-align:center;padding:10px 6px;margin-left:-2px;border-radius:0 10px 10px 0;font-size:11px;font-weight:800">L5<br><span style="font-weight:500;font-size:10px">Close + Onboard<br>Ký & giao hàng</span></div>
+    </div>
+    <div style="display:flex;gap:0;font-size:10px;color:var(--muted)">
+      <div style="flex:1;text-align:center">100%</div>
+      <div style="width:14px"></div>
+      <div style="flex:1;text-align:center">→ 20%</div>
+      <div style="width:14px"></div>
+      <div style="flex:1;text-align:center">→ 10%</div>
+      <div style="width:14px"></div>
+      <div style="flex:1;text-align:center">→ 5%</div>
+      <div style="width:14px"></div>
+      <div style="flex:1;text-align:center">→ 2%</div>
+    </div>
+    <div style="background:#fff7e8;border:1px dashed var(--amber);border-radius:10px;padding:10px 14px;margin-top:8px;font-size:11.5px;color:#7a5a14">
+      <b>Pitch cốt lõi theo kênh:</b><br>
+      🏭 <b>Compliance:</b> "TT19 bắt buộc — SAFER lo trọn gói: túi đúng chuẩn + kiểm tra định kỳ + báo cáo HSE. Thử pilot 1 khu vực trước."<br>
+      🛡️ <b>OEM:</b> "Sản xuất túi mang thương hiệu của anh/chị — SAFER lo toàn bộ QA + logistics. Báo MOQ & timeline?"<br>
+      🎓 <b>First Aid → B2B:</b> "Anh/chị tham dự lớp sơ cứu của chúng tôi — dịp đó mình có thể demo sản phẩm cho team HR luôn."
+    </div>
+
+    <!-- MONTHLY TRACKER -->
+    <h3 style="font-size:13px;color:var(--green-d);margin:20px 0 10px">📅 Lịch chốt deal & mục tiêu túi theo tháng</h3>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;background:var(--green-d);color:#fff;font-size:11px;font-weight:700;padding:10px 14px;gap:8px">
+        <div>Tháng</div><div>Focus chính</div><div>OEM</div><div>B2B</div><div>📦 Tích lũy</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;gap:8px;align-items:center">
+        <div style="font-weight:800;color:var(--coral)">T7</div>
+        <div><b>Chuẩn bị nền</b> · Web launch · Pitch OEM đầu tiên · Tools sẵn sàng</div>
+        <div style="color:var(--muted);font-size:11px">Outreach bắt đầu</div>
+        <div style="color:var(--muted);font-size:11px">—</div>
+        <div style="font-weight:800;color:var(--muted)">~50</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;gap:8px;background:#f8fbf9;align-items:center">
+        <div style="font-weight:800;color:var(--amber)">T8</div>
+        <div><b>First Aid Pilot</b> (25) → leads · OEM meeting · B2B contact bắt đầu</div>
+        <div style="font-size:11px">Meeting nhà thuốc + bảo hiểm</div>
+        <div style="font-size:11px">5–7 contacts/tuần</div>
+        <div style="font-weight:800;color:var(--amber)">~150</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;gap:8px;align-items:center">
+        <div style="font-weight:800;color:var(--amber)">T9</div>
+        <div><b>OEM Close #1</b> (nhà thuốc ~800 túi) · First Aid T8 leads → meeting B2B</div>
+        <div style="font-size:11px;color:var(--green-d);font-weight:700">🎯 CLOSE nhà thuốc</div>
+        <div style="font-size:11px">3–5 closes đầu</div>
+        <div style="font-weight:800;color:var(--amber)">~500</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;gap:8px;background:#f8fbf9;align-items:center">
+        <div style="font-weight:800;color:var(--green)">T10</div>
+        <div><b>OEM Close #2</b> (bảo hiểm ~1.000 túi) · Scale B2B · Refill loop bắt đầu · <span style="color:var(--coral);font-weight:700">🏃 09–10/10 Đất Sen Hồng Marathon</span></div>
+        <div style="font-size:11px;color:var(--green-d);font-weight:700">🎯 CLOSE bảo hiểm</div>
+        <div style="font-size:11px">10–15 closes</div>
+        <div style="font-weight:800;color:var(--green)">~1.100</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:11.5px;gap:8px;align-items:center">
+        <div style="font-weight:800;color:var(--green)">T11</div>
+        <div><b>OEM Close #3</b> (hãng xe ~500 túi) · Refill vòng 1 · Scale B2B cuối năm</div>
+        <div style="font-size:11px;color:var(--green-d);font-weight:700">🎯 CLOSE hãng xe</div>
+        <div style="font-size:11px">20–30 closes</div>
+        <div style="font-weight:800;color:var(--green)">~1.900</div>
+      </div>
+      <div style="display:grid;grid-template-columns:60px 1fr 80px 80px 90px;padding:9px 14px;font-size:11.5px;gap:8px;background:linear-gradient(90deg,#eef5f0,#fff);align-items:center">
+        <div style="font-weight:800;color:var(--green-d)">T12</div>
+        <div><b>Về đích</b> · Refill + remind toàn bộ khách · Tổng kết · Lên plan 2027</div>
+        <div style="font-size:11px">Refill OEM đợt 2</div>
+        <div style="font-size:11px">Close nốt pipeline</div>
+        <div style="font-weight:900;color:var(--green-d);font-size:14px">🎯 ~3.000+</div>
+      </div>
+    </div>
+
+    <!-- EVENT ACTIVATION: ĐẤT SEN HỒNG -->
+    <div style="background:linear-gradient(135deg,#fff8e8,#fffbf0);border:1px solid #f0dca8;border-left:5px solid var(--coral);border-radius:14px;padding:16px 20px;margin-top:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="font-size:22px">🏃</span>
+        <div>
+          <div style="font-size:12px;font-weight:900;color:var(--coral);letter-spacing:.5px;text-transform:uppercase">Event Activation · Tháng 10</div>
+          <div style="font-size:15px;font-weight:900;color:var(--green-d)">Booth SAFER × VPBank Đất Sen Hồng Marathon 2026</div>
+        </div>
+        <div style="margin-left:auto;text-align:right;flex:none">
+          <div style="font-size:10px;color:var(--muted)">Ngân sách</div>
+          <div style="font-size:14px;font-weight:900;color:var(--coral)">~27–44 triệu</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px">
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:10px;padding:10px;text-align:center">
+          <div style="font-size:18px">📅</div>
+          <div style="font-size:11px;font-weight:800;color:var(--green-d);margin-top:4px">09/10</div>
+          <div style="font-size:10px;color:var(--muted)">Expo Day<br>Nhận BIB</div>
+        </div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:10px;padding:10px;text-align:center">
+          <div style="font-size:18px">🏃</div>
+          <div style="font-size:11px;font-weight:800;color:var(--coral);margin-top:4px">10/10</div>
+          <div style="font-size:10px;color:var(--muted)">Race Day<br>3h sáng</div>
+        </div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:10px;padding:10px;text-align:center">
+          <div style="font-size:18px">👥</div>
+          <div style="font-size:11px;font-weight:800;color:var(--green-d);margin-top:4px">10.000+</div>
+          <div style="font-size:10px;color:var(--muted)">VĐV tiếp cận<br>trực tiếp</div>
+        </div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:10px;padding:10px;text-align:center">
+          <div style="font-size:18px">🎯</div>
+          <div style="font-size:11px;font-weight:800;color:var(--green-d);margin-top:4px">3 mục tiêu</div>
+          <div style="font-size:10px;color:var(--muted)">Awareness<br>Sales · B2B Lead</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px">
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:8px;padding:6px 10px;color:var(--ink)">🛒 Bán trực tiếp <b>30–80 túi</b></div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:8px;padding:6px 10px;color:var(--ink)">💼 Thu <b>30–70 B2B lead</b> (HDV, DN, CLB)</div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:8px;padding:6px 10px;color:var(--ink)">❤️ <b>150–300 follower</b> mới qua QR game</div>
+        <div style="background:#fff;border:1px solid #f0dca8;border-radius:8px;padding:6px 10px;color:var(--ink)">📸 <b>20–50 UGC</b> check-in Social</div>
+        <a href="https://79-ai.github.io/Safer_DatSenHongMarathon_2026/" target="_blank" style="background:var(--coral);border-radius:8px;padding:6px 10px;color:#fff;font-weight:700;text-decoration:none">→ Xem kế hoạch chi tiết ↗</a>
+      </div>
+    </div>
+
+    <!-- TOOLS CHECKLIST -->
+    <h3 style="font-size:13px;color:var(--green-d);margin:18px 0 10px">🧰 Công cụ cần chuẩn bị trước khi sales</h3>
+    <div class="grid g4">
+      <div class="card" style="text-align:left"><div class="ic">🌐</div><h4>Trang B2B trên web</h4><p>Giải thích TT19 · bảng giá theo quy mô · form liên hệ B2B · ready T7</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📄</div><h4>Bộ proposal template</h4><p>3 mẫu: Compliance / OEM co-brand / First Aid package · gửi ngay sau meeting</p></div>
+      <div class="card" style="text-align:left"><div class="ic">💬</div><h4>Zalo/WhatsApp script</h4><p>Tin nhắn cold outreach → meeting invite → follow-up → close · 5 bước viết sẵn</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📊</div><h4>Mini CRM tracking</h4><p>Theo dõi pipeline: Prospect → Contact → Meeting → Proposal → Close · target T8</p></div>
+    </div>
+  </div>
+
+  <!-- 9. COST -->
+  <div class="sec">
+    <div class="sh"><div class="n">9</div><h2>Lương nhân sự nội dung</h2></div>
+    <div class="cost">
+      <div class="price"><b>5tr</b><small>₫ / tháng · lương tổng 2 bạn</small></div>
+      <div class="who">
+        <div class="p2">
+          <div class="pp"><b>Hải Âu</b>Video + chăm sóc Facebook</div>
+          <div class="pp"><b>Lộc</b>Edit video hằng ngày (không quay)</div>
+        </div>
+        <p>📌 Tài đề xuất <b>lương 5 triệu/tháng</b> cho tổng cả Hải Âu + Lộc (video hằng ngày + Facebook).</p>
+        <p style="margin-top:5px">💬 Anh/chị có thể <b>đề xuất mức cụ thể hợp lý hơn</b> — cùng thống nhất con số phù hợp.</p>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card" style="text-align:left"><div class="ic">🎬</div><h4>Mục tiêu — Lộc & Hải Âu</h4><p>Hoàn thành <b>video đúng hạn</b> (mỗi ngày 1 video)</p></div>
+      <div class="card" style="text-align:left"><div class="ic">📘</div><h4>Mục tiêu — Hải Âu</h4><p>Chăm sóc Facebook <b>đạt KPI mục tiêu</b> (follower, tương tác, hoàn thành nhiệm vụ tuần)</p></div>
+    </div>
+  </div>
+
+  <div class="foot">SAFER 2026 · Y Tế Sơn Hương (uy tín 35 năm) · Infographic cập nhật 24/06/2026 · <a href="customers.html" style="color:var(--muted)">Phân tích khách hàng chi tiết →</a></div>
+
+</div>
+</body>
+</html>
